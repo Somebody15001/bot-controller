@@ -4,6 +4,19 @@ from colorama import Fore
 from time import sleep
 colorama.init(autoreset=True)
 import threading
+import requests
+from database import versionHash
+
+
+# version cOntrol
+url = "https://raw.githubusercontent.com/Somebody15001/bot-controller/version"
+response = requests.get(url)
+response.raise_for_status()
+content = response.text.strip()
+
+print(content)
+
+
 
 
 kanalids = "none"
