@@ -15,10 +15,13 @@ response.raise_for_status()
 content = response.text.strip()
 
 if content == versionHash:
-    print("güncel")
+    sleep(1)
+    print("BCD version updated ✔")
+    sleep(2)
 else:
-    print("yarram")
-
+    sleep(1)
+    print("BCD version out of date ✖  https://github.com/Somebody15001/bot-controller?tab=readme-ov-file ")
+    sleep(10)
 
 
 kanalids = "none"
