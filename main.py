@@ -16,11 +16,11 @@ content = response.text.strip()
 
 if content == versionHash:
     sleep(1)
-    print("There is no update for BCD ✔")
+    print("BCD has the latest version ✔")
     sleep(2)
 else:
     sleep(1)
-    print("There is an update for BCD✖  https://github.com/Somebody15001/bot-controller?tab=readme-ov-file ")
+    print("BDC has a new version! --> https://github.com/Somebody15001/bot-controller?tab=readme-ov-file ")
     sleep(20)
 
 
