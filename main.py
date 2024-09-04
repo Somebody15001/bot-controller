@@ -1,3 +1,5 @@
+import sys
+
 import discord
 import colorama
 from colorama import Fore
@@ -21,7 +23,7 @@ if content == versionHash:
 else:
     sleep(1)
     print(f"{Fore.LIGHTRED_EX}BDC has a new version! --> https://github.com/Somebody15001/bot-controller?tab=readme-ov-file ")
-    sleep(999999999)
+    sys.exit()
 
 
 kanalids = "none"
