@@ -1,4 +1,4 @@
-### Bot Controller
+## Bot Controller Discord | BCD
 #### It is a bot panel built with discord.py infrastructure to control your Discord bot
 
 > # requirements
