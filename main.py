@@ -9,13 +9,15 @@ from database import versionHash
 
 
 # version cOntrol
-url = "https://raw.githubusercontent.com/Somebody15001/bot-controller/version"
+url = "https://raw.githubusercontent.com/Somebody15001/bot-controller/main/version"
 response = requests.get(url)
 response.raise_for_status()
 content = response.text.strip()
 
-print(content)
-
+if content == versionHash:
+    print("güncel")
+else:
+    print("yarram")
 
 
 
