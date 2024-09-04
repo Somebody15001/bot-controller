@@ -16,12 +16,12 @@ content = response.text.strip()
 
 if content == versionHash:
     sleep(1)
-    print("BCD has the latest version ✔")
+    print(f"{Fore.LIGHTGREEN_EX}BCD has the latest version ✔")
     sleep(2)
 else:
     sleep(1)
     print("BDC has a new version! --> https://github.com/Somebody15001/bot-controller?tab=readme-ov-file ")
-    sleep(20)
+    sleep(9999999999)
 
 
 kanalids = "none"
