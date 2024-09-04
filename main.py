@@ -217,7 +217,6 @@ class MyClient(discord.Client):
                 print(f"{Fore.RED}Error: {e}")
 
     async def send_message_to_channel(self, message):
-        await self.wait_until_ready()
         channel = self.get_channel(self.target_channel_id)
         if channel:
             await channel.send(message)
