@@ -6,37 +6,22 @@ colorama.init(autoreset=True)
 import threading
 import requests
 from database import versionHash
-import time
 
 
-# version cOntrol
-try:
-    url = "https://raw.githubusercontent.com/Somebody15001/bot-controller/main/version"
-    response = requests.get(url)
-    response.raise_for_status()
-    content = response.text.strip()
-
-    print(f"{Fore.CYAN}Last version : {content}")
-    print(f"{Fore.CYAN}Used version : {versionHash}")
-    if versionHash == content:
-        print(f"{Fore.GREEN}OBC in its most current version ✓")
-        time.sleep(3)
-    else:
-        print(""*2)
-        print(f"{Fore.YELLOW}Update available ! ")
-        print(f"{Fore.YELLOW}Use : git clone https://github.com/Somebody15001/bot-controller")
-        update = True
-except requests.exceptions.RequestException as e:
-    print(f"Request failed: {e}")
+# version control
+url = "https://raw.githubusercontent.com/Somebody15001/bot-controller/main/version"
+response = requests.get(url)
+response.raise_for_status()
+content = response.text.strip()
 
 if content == versionHash:
     sleep(1)
-    print("BCD version updated ✔")
+    print("There is no update for BCD ✔")
     sleep(2)
 else:
     sleep(1)
-    print("BCD version out of date ✖  https://github.com/Somebody15001/bot-controller?tab=readme-ov-file ")
-    sleep(10)
+    print("There is an update for BCD✖  https://github.com/Somebody15001/bot-controller?tab=readme-ov-file ")
+    sleep(20)
 
 
 kanalids = "none"
