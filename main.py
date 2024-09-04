@@ -20,8 +20,8 @@ if content == versionHash:
     sleep(2)
 else:
     sleep(1)
-    print("BDC has a new version! --> https://github.com/Somebody15001/bot-controller?tab=readme-ov-file ")
-    sleep(9999999999)
+    print(f"{Fore.LIGHTRED_EX}BDC has a new version! --> https://github.com/Somebody15001/bot-controller?tab=readme-ov-file ")
+    sleep(999999999)
 
 
 kanalids = "none"
