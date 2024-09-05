@@ -4,6 +4,9 @@ import discord
 import colorama
 from colorama import Fore
 from time import sleep
+
+from soupsieve.util import lower
+
 colorama.init(autoreset=True)
 import threading
 import requests
@@ -15,6 +18,7 @@ url = "https://raw.githubusercontent.com/Somebody15001/bot-controller/main/versi
 response = requests.get(url)
 response.raise_for_status()
 content = response.text.strip()
+
 
 if content == versionHash:
     sleep(1)
@@ -78,41 +82,41 @@ class MyClient(discord.Client):
         print(f"{Fore.LIGHTBLUE_EX}INFO    {Fore.LIGHTBLACK_EX} software active")
         while True:
             command = input(f"{Fore.BLUE}")  # Konsoldan komut bekler----------------------------------------------***********************
-            if command.strip() == "/msg-mode":
+            if command.strip() in ["/msg-mode", "!msg-mode"]:
                 self.full_wiew_off_task()
                 self.msg_mode_enabled = True
                 kanalids = input(f"{Fore.LIGHTYELLOW_EX}Enter the channel ID:{Fore.GREEN} ")
                 self.target_channel_id = int(kanalids)
                 self.send_message_task()  # Mesaj gönderme görevini başlat
-            elif command.strip() == "/del":
+            elif command.strip() in ["/del", "!del"]:
                 self.full_wiew_off_task()
                 self.delete_messages_task()  # Mesaj silme görevini başlat
-            elif command.strip() == "/wiw":
+            elif command.strip() in ["/wiw", "!wiw"]:
                 self.full_wiew_off_task()
                 self.wiw_mode_enabled = True    
                 self.set_wiw_status()  # /wiw komutuyla statüyü ayarlama
-            elif command.strip() == "/ban":
+            elif command.strip() in ["/ban", "!ban"]:
                 self.full_wiew_off_task()
                 self.ban_user_task()  # Banlama görevini başlat
-            elif command.strip() == "/kick":
+            elif command.strip() in ["/kick", "!kick"]:
                 self.full_wiew_off_task()
                 self.kick_user_task()  # Kickleme görevini başlat
-            elif command.strip() == "/role":
+            elif command.strip() in ["/role", "!role"]:
                 self.full_wiew_off_task()
                 self.assign_role_task()  # Rol atama görevini başlat
-            elif command.strip() in ["/help", "/?"]:
+            elif command.strip() in ["/help", "/h", "!help", "!h"]:
                 self.full_wiew_off_task()
                 self.help_task()  # help komutunu çalıştır
-            elif command.strip() == "/unban":
+            elif command.strip() in ["/unban", "!unban"]:
                 self.full_wiew_off_task()
                 self.unban_user_task() # unban komutunu çalıştır
-            elif command.strip() == "/full-view":
+            elif command.strip() in ["/full-view", "!full-view"]:
                 if fullwmode == True:
                     print(f"{Fore.RED}full view mode already enabled")
                 else:
                     print(f"{Fore.LIGHTGREEN_EX}full view mode enabled")
                     fullwmode = True
-            elif command.strip() == "/fv-off": # full view'i kapat
+            elif command.strip() in ["/fv-off" in "!fv-off"]: # full view'i kapat
                 if fullwmode == False:
                     print(f"{Fore.LIGHTRED_EX}full view mode already disabled")
                 else:
@@ -132,8 +136,8 @@ class MyClient(discord.Client):
                          /msg-mode ----> /mm-off
                          /full-view ---> /fv-off
                          /del
-                         /wiw
-                         /kick
+                         /wiw                         
+                         /kick                     You can also use “!” instead of “/”
                          /ban
                          /unban
                          /role
@@ -209,8 +213,8 @@ class MyClient(discord.Client):
         while self.msg_mode_enabled:
             sleep(1)
             try:
-                message = input()  # Kullanıcıdan mesaj alın
-                if message == "/mm-off":
+                message = lower(input())  # Kullanıcıdan mesaj alın
+                if message in ["/mm-off", "!mm-off"]:
                     self.msg_mode_enabled = False
                     print(f"{Fore.LIGHTRED_EX}msg mode disabled")
                 else:
