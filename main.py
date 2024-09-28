@@ -12,6 +12,10 @@ import threading
 import requests
 from database import versionHash
 
+#kayıt okuma
+with open("dataSta.txt", "r") as dosya:  # 'r' parametresi dosyayı okuma modunda açar
+    savedtoken = dosya.read()
+
 
 # version control
 url = "https://raw.githubusercontent.com/Somebody15001/bot-controller/main/version"
@@ -51,6 +55,12 @@ print(f'''
 ''')
 sleep(1)
 enter_token = input(f"{Fore.LIGHTMAGENTA_EX}Please enter your bot token:{Fore.GREEN}")
+
+# Girdiyi 'dataSta.txt' dosyasına yaz
+if not enter_token == "!":
+    with open("dataSta.txt", "w") as dosya:  # 'w' parametresi dosyanın üzerine yazar, önceki veriyi siler
+        dosya.write(enter_token + "\n")
+
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -318,4 +328,8 @@ class MyClient(discord.Client):
             print(f"{Fore.RED}Guild not found!")
 
 client = MyClient(intents=intents)
-client.run(enter_token)
+if enter_token == "!":
+    if not savedtoken == "NULL(0);":
+        client.run(savedtoken)
+else:
+    client.run(enter_token)
