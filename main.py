@@ -126,7 +126,7 @@ class MyClient(discord.Client):
                 else:
                     print(f"{Fore.LIGHTGREEN_EX}full view mode enabled")
                     fullwmode = True
-            elif command.strip() in ["/fv-off" in "!fv-off"]: # full view'i kapat
+            elif command.strip() in ["/fv-off", "!fv-off"]:             # full view'i kapat
                 if fullwmode == False:
                     print(f"{Fore.LIGHTRED_EX}full view mode already disabled")
                 else:
